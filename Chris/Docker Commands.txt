@@ -1,0 +1,26 @@
+docker image build -t chrisjones3141/gsd:first-ctr .      (Builds image with files in folder)
+		-t  =  tag/name
+		.   =  Builds image with files in folder
+
+docker image ls
+
+docker image push chrisjones3141/gsd:first-ctr		(pushes image to DockerHub)
+
+docker image rm chrisjones3141/gsd:first-ctr
+
+docker container run -d --name web -p 8000:8080 \chrisjones3141/gsd:first-ctr     (Runs container from DockerHub)
+
+
+docker container ls 
+
+docker container ls -a 		(lists even stoped containers)
+
+
+docker container stop web
+
+docker container start web
+
+
+docker container rm web
+
+docker compose up -d		(uses the compose file)

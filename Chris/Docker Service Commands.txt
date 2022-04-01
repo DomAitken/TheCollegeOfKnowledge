@@ -1,0 +1,19 @@
+Uses docker-compose.yml*   (to launch a service declaritively, I think)
+				Image must be pre-built and hosted in a repository
+
+docker stack deploy -c docker-compose.yml [name of app]
+
+docker stack ls
+
+docker stack rm [name of stack] 		(tears down the stack)
+
+
+Individual commands:-
+
+docker service create --name web -p 8080:8080 \--replicas 3 nigelpoulton/gsd:first-ctr
+
+docker service ps [name of service]
+
+docker service ls
+
+docker service scale [name of service]=[number of desired services]

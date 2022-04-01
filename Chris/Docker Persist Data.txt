@@ -1,0 +1,4 @@
+docker volume create 		(Creates volume data store, exist outside the container)
+
+docker container run -dit --name voltest --mount source=[volume name], target=[where in the container to mount it]  alpine:latest		
+								(createS a container and a volume with it)
