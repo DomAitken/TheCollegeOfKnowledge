@@ -10,8 +10,8 @@
 - Delete container - `docker container rm <container id>`
 
 ## dockerfile
-A file that consists if a set of build instructions for Docker to build the app and its dependencies into a container image.
-Example: -
+A file that consists if a set of build instructions for Docker to build the app and its dependencies into a container image.\
+Example:-
 ```
 # Test web app that returns the name of the host/pod/container servicing req
 # Linux x64
