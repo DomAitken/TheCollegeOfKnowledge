@@ -1,4 +1,5 @@
 # Docker Guide
+[PluralSight GitHub repo](https://github.com/nigelpoulton/gsd.git)
 
 ## Basic Commands
 - List all images   -   `docker image ls` 
