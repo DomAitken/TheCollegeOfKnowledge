@@ -4,7 +4,7 @@
 - List all images   -   `docker image ls` 
 - List all containers (-a lists all non-running containers)  -   `docker container -a`
 - Builds an image with files in current directory   -   `docker image build -t <docker id>/<repo>:<image name> .`
-- Run container (-d means run it detached)    -    `docker container -d --name <name> -p 8000:8000 <image id>`   
+- Run container (-d means run it detached)    -    `docker container run -d --name <name> -p 8000:8000 <image id>`   
 - Run container with interactable shell     -   `docker container run -it --name <name> alpine sh`
 - Stop Container    -   `docker container stop <container id>`
 - Delete container - `docker container rm <container id>`
