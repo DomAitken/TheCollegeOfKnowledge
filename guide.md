@@ -3,7 +3,7 @@
 
 ## Basic Commands
 - List all images   -   `docker image ls` 
-- List all containers (-a lists all non-running containers)  -   `docker container -a`
+- List all containers (-a lists all non-running containers)  -   `docker container ls -a`
 - Builds an image with files in current directory   -   `docker image build -t <docker id>/<repo>:<image name> .`
 - Run container (-d means run it detached)    -    `docker container run -d --name <name> -p 8000:8000 <image id>`   
 - Run container with interactable shell     -   `docker container run -it --name <name> alpine sh`
