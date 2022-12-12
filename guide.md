@@ -19,7 +19,8 @@ Run container (-d means run it detached)
 docker container run -d --name <name> -p 8000:8000 <image id>
 ```   
 Run container with interactable shell
-```docker container run -it --name <name> alpine sh
+```
+docker container run -it --name <name> alpine sh
 ```
 Stop Container
 ```
