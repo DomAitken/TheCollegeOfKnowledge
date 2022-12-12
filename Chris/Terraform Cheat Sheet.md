@@ -1,83 +1,151 @@
 # Useful Links 
-*Terraform docs: https://registry.terraform.io/*
+Terraform docs: https://registry.terraform.io/
 
-# Info
-*Create a declarative Terraform file .tf that specifies the provider and resources etc.*
-*Terraform files are written in JSON or HashiCorp Configuration Language, HCL*
+## Basic Commands
+---
+Initializes a directory for Terraform <br />
+```
+terraform init
+```
 
+Format Terraform files <br />
+```
+terraform fmt
+```
 
-# Basic Commands
+Checks if the Terraform code is valid <br />
+```
+terraform validate
+```
 
-`terraform init`                          *Initializes a directory for Terraform*
-`terraform plan -out m3.tfplan`           *Creates a plan for the .tf file and creates a m3.tfplan file and saves the output to it*
-`terraform apply "m3.tfplan"`             *Runs the plan that is saved in the m3.tfplan file* 
-`terraform destroy`                       *Tears down running resources in created in the directory*
+Creates a plan for the .tf files and creates a m3.tfplan file and saves the output to it <br />
+```
+terraform plan -out m3.tfplan
+```
 
+Runs the plan that is saved in the m3.tfplan file <br />
+```
+terraform apply "m3.tfplan"
+```
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
+Tears down resources in created in the directory <br />
+```
+terraform destroy
+```
 
+## Variable Syntax
+---
+- ***variables.tf*** file is used to declare empty variables. <br />
+***terraform.tfvars*** file is used to add values to variables declared in ***variables.tf*** file. <br />
 
-# State Commands 
-`terraform state list`                                              *Lists all state resources* 
+Declare an empty variable. <br />
+```
+variable "name_label" {}
+``` 
 
-`terraform state show <resource address>`                           *Shows a specific resource, address is the resource type and name_label*
+Declaring a variables: type, description, default (value) and sensitivity.
+```
+variable "name_label" {      
+    type = value                        
+    description = "value"    
+    default = "value"                     
+    sensitive = true | false              
+}      
+```                      
 
-`terraform state mv <source address> <destination address>`         *Move an item in state*
+How to reference variables. <br />
+```
+var.<name_label>    
 
-`terraform state rm <address>`                                      *Remove an item from state* 
+var.aws_region
+```
 
+How to reference variables in a map. <br />
+```
+var.<name_label>["value_key"]
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
+var.subnets_cidr["public_subnets_cidr"]
+```
 
+## Primitive Data Types for
+---
+String
+```
+"us-west-1"
+```
 
-# Variable Syntax
+Number (integer or decimal)
+```
+6 
 
-`variable "name_label" {} `
+0.5
+``` 
+Boolean
+```
+true
 
-`variable "name_label" {      `
-`    type = value             `               *type refers to the data type*
-`    description = "value"    `
-`    default = "value"        `               *A default value for the variable if ones is not submitted*
-`    sensitive = true | false `               *Used to hide sensitive values, they're not displayed in logs*
-`}                            `
+false
+```
 
-`var.<name_label>`                            *Terraform Variable Reference*
-`var.aws_region`
+## Collection Data Types
+---
+- Groupings of the primitive data types and must be of the same data type.
 
-# Primitive Data Types for
-*String, number (integer or decimal) and boolean*
+List (ordered group of elements) 
+```
+[1, 2, 3, 4]
 
-# Collection Data Types
-*List (ordered), set (unordered) and map (group of key value pairs). Groupings of the primitive data types and must be of the same type.*
+["eu-west-1", "eu-west-2", "eu-west-3"]
+```
 
-# Structural Data Types
-*Tuple (equivalent to lists) and Objects (equivalent to maps). Allows data types stored in each grouping to be mixed*
+Map (group of key value pairs) 
+```
+{
+    small  = "t2.micro"
+    medium = "t2.small"
+    large  = "t2.large"
+}
+```
+How to reference collection values.
+```
+var.<name_label>[<element_number>]
 
-# Locales Syntax
-`locals {               `
-`    key = value        `
-`}                      `
+var.aws_regions[1]
 
-`locals {                                   `
-`    instance_prefix = globo                `
-`    common_tags = {                        `
-`       company = "globomantics"            `
-`       project = var.project               `
-`       billing_code = var.billing_code     `
-`    }                                      `
-`}                                          `
+var.aws_instance_size["medium"]
+```
 
-# Locals Reference
-`local.<name_label>`
-`local.instance_prefix`
-`local.common_tags.company`
+## Structural Data Types
+---
+- Allows data types stored in each grouping to be mixed. 
 
-# Output 
-`output "label_name" {                          `
-`    value = output_value                       `
-`    description = "description of output"      `
-`    sensitive = true | false                   `
-`}                                              `
+Tuple (equivalent to lists)
+```
+person1 = [4, "James", true]
+```
+Objects (equivalent to maps)
+```
+person1 = {
+    name       = "James"
+    experience = 4
+    retired    = true
+}
+```
 
-# Terraform validate
-`terraform validate`                *Checks files for any errors, must have done `terraform init` first*
+## Output
+--- 
+- Values printed out to the terminal windows after a configuration is run.
+
+Output syntax
+```
+output "name_label" {
+    value       = output_value
+    description = "Description of the output."
+    sensitive   = true | false
+}
+
+output "public_dns_hostname" {
+    value       = aws_instance.web_server.public_dns
+    description = "Public DNS hostname web server."
+}
+```
