@@ -134,7 +134,7 @@ person1 = {
 
 ## Output
 --- 
-- Values printed out to the terminal windows after a configuration is run.
+- Values printed out to the terminal window after a configuration is run.
 
 Output syntax
 ```
@@ -147,5 +147,35 @@ output "name_label" {
 output "public_dns_hostname" {
     value       = aws_instance.web_server.public_dns
     description = "Public DNS hostname web server."
+}
+```
+
+## Data Sources
+---
+- Data sources allow Terraform to use information defined outisde of Terraform, defined by other Terraform configuration or modified by functions. 
+
+Data block syntax
+```
+data "<instance_type>" "name_label" {
+    filter {
+        name  = <attribute_name>
+        value = <attribute_value>
+    }
+}
+
+data "aws_subnets" "sub_test" {
+  filter {
+    name   = "vpc-id"
+    values = ["vpc-03bd721528c7911c4"]
+  }
+}
+```
+
+Referencing a data source
+```
+data.<resource_type>.<name_label>.<attribute>
+
+output "subnet_output" {
+    value = data.aws_subnets.sub_test
 }
 ```
