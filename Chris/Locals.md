@@ -62,8 +62,44 @@ traffic_schema = flatten([
     ]
 ])
 ```
+Data Structure that it creates: 
+```
+{
+          + port = 80
+          + type = "ingress"
+        },
+      + {
+          + port = 443
+          + type = "ingress"
+        },
+      + {
+          + port = 8090
+          + type = "ingress"
+        },
+      + {
+          + port = 5801
+          + type = "ingress"
+        },
+      + {
+          + port = 80
+          + type = "egress"
+        },
+      + {
+          + port = 443
+          + type = "egress"
+        },
+      + {
+          + port = 8090
+          + type = "egress"
+        },
+      + {
+          + port = 5801
+          + type = "egress"
+        },
+```
 
 Resource block that loops through the above *'traffic_schema'* to create multiple resources from the two lists of values.
+Creates a resource of each type and of each port. As illustrated in the above code block.
 ```
 resource "aws_security_group_rule" "dev_box" {
   for_each                 = { for entry in local.traffic_schema : "${entry.type}.${entry.port}" => entry }
