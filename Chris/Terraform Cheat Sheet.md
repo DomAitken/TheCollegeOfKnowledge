@@ -20,7 +20,7 @@ resource "aws_instance" "web_server" {
 }
 ```
 
-How to reference am object in Terraform
+How to reference an object in Terraform
 ```
 <resource_type>.<name_label>.<attribute>
 
