@@ -38,7 +38,7 @@ local.common_tags.company
 ---
 Locals can be used to create data structures that enable nested for loops to be used for creating multiple resources. <br />
 
-[Refence](https://www.daveperrett.com/articles/2021/08/19/nested-for-each-with-terraform/)
+[Reference](https://www.daveperrett.com/articles/2021/08/19/nested-for-each-with-terraform/)
 
 The below *'traffic_schema'* uses a nested-for-loop and the *'type'* and *'ports'* locals to create a data structure that is then used to loop through and create multiple resources within one resource block.
 ```
