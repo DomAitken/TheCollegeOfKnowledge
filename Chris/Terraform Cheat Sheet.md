@@ -1,6 +1,31 @@
 # Useful Links 
 Terraform docs: https://registry.terraform.io/
 
+## Block Syntax
+---
+Terraform uses block syntax
+```
+block_type "label" "name_label" {
+    key = "value"
+    nested_block {
+        key = "value"
+    }
+}
+
+resource "aws_instance" "web_server" {
+    name = "web_server"
+    ebs_volume {
+        size = 40
+    }
+}
+```
+
+How to reference am object in Terraform
+```
+<resource_type>.<name_label>.<attribute>
+
+aws_instance.web_server.name
+```
 ## Basic Commands
 ---
 Initializes a directory for Terraform <br />
@@ -69,18 +94,18 @@ var.subnets_cidr["public_subnets_cidr"]
 
 ## Primitive Data Types for
 ---
-String
+**String**
 ```
 "us-west-1"
 ```
 
-Number (integer or decimal)
+**Number** (integer or decimal)
 ```
 6 
 
 0.5
 ``` 
-Boolean
+**Boolean**
 ```
 true
 
@@ -91,14 +116,14 @@ false
 ---
 - Groupings of the primitive data types and must be of the same data type.
 
-List (ordered group of elements) 
+**List** (ordered group of elements) 
 ```
 [1, 2, 3, 4]
 
 ["eu-west-1", "eu-west-2", "eu-west-3"]
 ```
 
-Map (group of key value pairs) 
+**Map** (group of key value pairs) 
 ```
 {
     small  = "t2.micro"
@@ -119,11 +144,11 @@ var.aws_instance_size["medium"]
 ---
 - Allows data types stored in each grouping to be mixed. 
 
-Tuple (equivalent to lists)
+**Tuple** (equivalent to lists)
 ```
 person1 = [4, "James", true]
 ```
-Objects (equivalent to maps)
+**Objects** (equivalent to maps)
 ```
 person1 = {
     name       = "James"
