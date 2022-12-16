@@ -131,6 +131,15 @@ false
     large  = "t2.large"
 }
 ```
+
+**Set** (set of unique values and can use *toset()* function to cast a list to a set. Useful when trying to use *for_each* loops)
+```
+variable "users_set" {
+  type = set(string)
+  default = (["root", "user1", "user2"])
+}
+```
+
 How to reference collection values.
 ```
 var.<name_label>[<element_number>]
