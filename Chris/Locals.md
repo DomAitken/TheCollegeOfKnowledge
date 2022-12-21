@@ -111,3 +111,36 @@ resource "aws_security_group_rule" "dev_box" {
   security_group_id        = aws_security_group.dev_box.id
 }
 ```
+
+## Combining Lists
+---
+- Locales can be used to combine two lists into one
+
+Var.test and var.test2 are two lists that are combined into a new list of objects called local.test2. Each value of the lists are matched based on the index of their initial lists. <br />
+E.g. value of var.test[0] is matched with the value of var.test2[0] and so on.
+
+```
+test2 = [
+    for t2 in var.test2 : {
+      name = t2
+      key  = var.test[(index(var.test2, t2))]
+    }
+  ]
+```
+Data structure that is produced
+```
+ test = [
+      + {
+          + key  = "ports"
+          + name = 80
+        },
+      + {
+          + key  = "protocol"
+          + name = "tcp"
+        },
+      + {
+          + key  = "active"
+          + name = true
+        },
+    ]
+```
