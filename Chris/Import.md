@@ -18,7 +18,6 @@ terraform import aws_subnet_public_subnet subnet-9f4r7y6c
 ```
 
 ## Terraform Show 
----
 Once the resource has been imported into the state, the show command can display the resource in Terraform's block syntax.
 ```
 terraform show
