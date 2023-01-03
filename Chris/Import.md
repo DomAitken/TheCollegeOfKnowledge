@@ -10,7 +10,6 @@ resource "aws_subnet" "subnet-a" {
 ```
 
 ## Import command
----
 - The import command for each resource type can be found at the bottom of the resource page of the Terraform documentation (different command format for each resource type).
 ```
 terraform import <resource_type>.<name_label> <id/arn>
