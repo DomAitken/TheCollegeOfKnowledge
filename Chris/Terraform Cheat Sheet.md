@@ -169,7 +169,6 @@ person1 = {
 ## Output
 --- 
 - Values printed out to the terminal window after a configuration is run.
-- A child module can use outputs to expose a subset of its resource attributes to a parent module.
 
 Output syntax
 ```
@@ -183,6 +182,15 @@ output "public_dns_hostname" {
     value       = aws_instance.web_server.public_dns
     description = "Public DNS hostname web server."
 }
+```
+
+- A child module can use outputs to expose a subset of its resource attributes to a parent module.
+
+Accessing Child Module Outputs
+```
+module.<module name>.<output name>
+
+module.web_server.instance_ip_address
 ```
 
 ## Data Sources
