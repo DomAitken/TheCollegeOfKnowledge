@@ -169,6 +169,7 @@ person1 = {
 ## Output
 --- 
 - Values printed out to the terminal window after a configuration is run.
+- A child module can use outputs to expose a subset of its resource attributes to a parent module.
 
 Output syntax
 ```
